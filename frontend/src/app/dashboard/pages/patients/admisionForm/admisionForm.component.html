@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="flex justify-content-between flex-wrap">
+    <div class="flex align-items-center justify-content-center border-round">
+      <h4>
+        Ficha de ingreso >
+        <a mat-button color="primary" matTooltip="Ver Perfil">
+          @if(patient){
+          {{ patient.name }} {{ patient.surname }} {{ patient.secondSurname }} }</a
+        >
+      </h4>
+    </div>
+    <div>
+      <div class="flex align-items-center justify-content-end border-round pb-2">
+        <button class="my-2" mat-raised-button color="primary" (click)="onSave()">
+          @if(editMode){ Actualizar }@else { Guardar }
+          <mat-icon>save</mat-icon>
+        </button>
+
+        @if(patient){ @if(admissionFormRegistered || patient.registeredAdmissionForm){
+        <button class="ml-1 my-2" mat-raised-button color="primary" (click)="onSaveSistrat()">SISTRAT<mat-icon>save</mat-icon></button>
+        } }
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" dynamicHeight class="mt-4">
+      @if(patient && admissionForm){
+      <mat-tab label="Identificación de usuarios">
+
+
+        <user-identification [patient]="patient" [admissionForm]="admissionForm"/>
+      </mat-tab>
+      <mat-tab label="Caracterización Sociodemográfica">
+        <socio-demographic-form [admissionForm]="admissionForm"/>
+      </mat-tab>
+      <mat-tab label="Patrón de Consumo Problemático ">
+        <consumer-pattern-form [admissionForm]="admissionForm"/>
+      </mat-tab>
+      <mat-tab label="Diagnóstico Clínico ">
+        <clinical-diagnosis-form [admissionForm]="admissionForm"/>
+      </mat-tab>
+
+      <mat-tab label="Tratamiento/Convenio "><treatment-form [admissionForm]="admissionForm"/></mat-tab>
+
+      <mat-tab label="Diagnósitco de Int. Social"><social-diagnosis-form [admissionForm]="admissionForm"/>
+      </mat-tab>
+    }
+
+    </mat-tab-group>
+  </div>
+</div>

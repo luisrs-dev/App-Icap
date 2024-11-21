@@ -1,0 +1,42 @@
+<form [formGroup]="serviceForm" (ngSubmit)="onSave()">
+<h2 mat-dialog-title>Nuevo cargo</h2>
+<mat-dialog-content>
+    <div class="pt-2">
+      <mat-form-field class="w-full" appearance="outline">
+        <mat-label>Cargo</mat-label>
+        <input matInput placeholder="Agregar nuevo..."
+        formControlName="name"
+        
+        />
+      </mat-form-field>
+    </div>
+
+      <div class="grid">
+        <div class="col">
+          <h1>Prestaciones</h1>
+          <div>
+            @if(services$ | async; as services){
+              @for (service of services; track $index) {
+                <p>
+                  <mat-slide-toggle (change)="onPermissionChange(service, $event)">{{ service.description }}</mat-slide-toggle>
+                </p>
+              }  
+            }
+            @else{ 
+              Cargando...
+            }
+          </div>
+        </div>
+      </div>
+    <!-- <div>
+      <button mat-button>Cerrar</button>
+      <button mat-flat-button color="primary" type="submit">Guardar</button>
+    </div> -->
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+    <button mat-button color="primary" type="submit" >Registrar</button>
+  </mat-dialog-actions>
+  
+</form>
