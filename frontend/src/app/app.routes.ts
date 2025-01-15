@@ -6,14 +6,14 @@ export const routes: Routes = [
     path: 'dashboard',
     loadComponent: () => import('./dashboard/dashboard.component'),
     data: { icon: 'dashboard' },
-    canActivate: [isAuthenticatedGuard],
+    // canActivate: [isAuthenticatedGuard],
     children: [
       {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full',
       },
-      
+
       {
         path: 'home',
         title: 'Bienvenido',
@@ -22,11 +22,11 @@ export const routes: Routes = [
           import('./dashboard/pages/home/home.component'),
       },
       {
-        path: 'users',
-        title: 'Profesionales',
+        path: 'test-icap',
+        title: 'Test ICAP',
         data: { icon: 'group', child: false, forAdmin: true },
         loadComponent: () =>
-          import('./dashboard/pages/users/list/list.component'),
+          import('./dashboard/pages/test-icap/test-icap.component'),
       },
       {
         path: 'users/nuevo',
@@ -110,7 +110,7 @@ export const routes: Routes = [
         path: 'programas',
         title: 'Programas',
         data: { icon: 'manage_accounts', parameter: true},
-    
+
         loadComponent: () =>
           import('./dashboard/pages/parameters/programs/list/programs.component'),
       },

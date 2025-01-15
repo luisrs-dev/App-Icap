@@ -30,6 +30,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {
   MatBottomSheetModule
 } from '@angular/material/bottom-sheet';
+import { MatExpansionModule } from '@angular/material/expansion';
 @NgModule({
   declarations: [],
   exports: [
@@ -59,7 +60,8 @@ import {
     MatStepperModule,
     MatTabsModule,
     MatSlideToggleModule,
-    MatRadioModule
+    MatRadioModule,
+    MatExpansionModule
   ],
 })
 export class MaterialModule {}

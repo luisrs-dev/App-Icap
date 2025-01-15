@@ -1,0 +1,97 @@
+<div class="container">
+   <!-- Bloque descriptivo de puntajes -->
+    <div>
+      <mat-card>
+          <mat-card-header>
+              <mat-card-title>Escala de Evaluación</mat-card-title>
+              <mat-card-subtitle>Subtitle</mat-card-subtitle>
+          </mat-card-header>
+          <!-- <img matCardImage src="Card wide image source"> -->
+          <mat-card-content>
+            <mat-list>
+              <mat-list-item *ngFor="let desc of scoreDescriptions" class="score-description-item">
+                <div matLine class="score-title">
+                  <strong>{{ desc.score }}:</strong> {{ desc.title }}
+                </div>
+                <div matLine class="score-detail">
+                  {{ desc.description }}
+                </div>
+              </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+          <mat-card-actions align="start">
+
+          </mat-card-actions>
+          <!-- <mat-card-footer>
+              Footer
+          </mat-card-footer> -->
+      </mat-card>
+      <!-- <mat-accordion >
+       <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+         <mat-expansion-panel-header>
+           <mat-panel-title>Escala de Evaluación</mat-panel-title>
+           <mat-panel-description>
+             Currently I am {{panelOpenState() ? 'open' : 'closed'}}
+           </mat-panel-description>
+         </mat-expansion-panel-header>
+         <mat-list>
+           <mat-list-item *ngFor="let desc of scoreDescriptions" class="score-description-item">
+             <div matLine class="score-title">
+               <strong>{{ desc.score }}:</strong> {{ desc.title }}
+             </div>
+             <div matLine class="score-detail">
+               {{ desc.description }}
+             </div>
+           </mat-list-item>
+         </mat-list>
+       </mat-expansion-panel>
+     </mat-accordion> -->
+
+    </div>
+
+    <div>
+      <mat-card class="test-card">
+        <mat-card-header>
+          <mat-card-title>Evaluación de Competencias</mat-card-title>
+          <mat-card-subtitle>
+            Puntaje Total: {{ getTotalScore() }} / {{ getMaxScore() }}
+          </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <form [formGroup]="testForm">
+            <div *ngFor="let question of questions" class="question-row">
+              <div class="points-section">
+                <mat-radio-group [formControlName]="'q' + question.id">
+                  <mat-radio-button
+                    *ngFor="let point of question.points"
+                    [value]="point"
+                    class="point-radio">
+                    {{ point }}
+                  </mat-radio-button>
+                </mat-radio-group>
+              </div>
+
+              <div class="question-text">
+                <mat-card class="question-card">
+                  <p>{{ question.text }}</p>
+                </mat-card>
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="submitTest()"
+            [disabled]="!testForm.valid">
+            Finalizar Evaluación
+          </button>
+        </mat-card-actions>
+      </mat-card>
+
+    </div>
+
+</div>

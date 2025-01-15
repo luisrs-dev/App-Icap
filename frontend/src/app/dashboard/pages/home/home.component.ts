@@ -20,12 +20,12 @@ export default class HomeComponent {
 
     ngOnInit(): void {
 
-    this.user = this.authService.getUser();
-    console.log(this.user);
-    
+    // this.user = this.authService.getUser();
+    // console.log(this.user);
+
 
         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
         //Add 'implements OnInit' to the class.
-        
+
     }
  }

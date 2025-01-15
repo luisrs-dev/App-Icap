@@ -35,14 +35,14 @@ export default class DashboardComponent implements OnInit {
   public user: User;
 
   ngOnInit() {
-    this.isAdmin = this.authService.isAdmin();
-    this.user = this.authService.getUser();
-    
-    
-    this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
-      this.mobileService.setMobileState(screenSize.matches);
-      this.isMobile = screenSize.matches;
-    });
+    // this.isAdmin = this.authService.isAdmin();
+    // this.user = this.authService.getUser();
+
+
+    // this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
+    //   this.mobileService.setMobileState(screenSize.matches);
+    //   this.isMobile = screenSize.matches;
+    // });
   }
 
   onLogout() {
@@ -71,8 +71,8 @@ export default class DashboardComponent implements OnInit {
         icon: route.data?.['icon'],
       };
     });
-    
-    
+
+
     public menuParameters = routes
     .map((route) => route.children ?? [])
     .flat()
